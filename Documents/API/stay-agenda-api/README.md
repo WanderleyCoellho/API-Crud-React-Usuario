@@ -59,7 +59,7 @@ A aplicação estará disponível em `http://localhost:8080`.
 
 ## Endpoints da API
 
-A URL base para todos os endpoints é `http://localhost:8080/api/produtos`.
+A URL base para todos os endpoints é `http://localhost:8080/api/usuarios`.
 
 | Método | Endpoint | Descrição | Exemplo de Body (JSON) |
 | :--- | :--- | :--- | :--- |
