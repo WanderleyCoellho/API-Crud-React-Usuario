@@ -63,7 +63,7 @@ A URL base para todos os endpoints é `http://localhost:8080/api/usuarios`.
 
 | Método | Endpoint | Descrição | Exemplo de Body (JSON) |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/` | Cria um novo produto | `{ "nome": "Notebook", "preco": 4500.0 }` |
+| `POST` | `/` | Cria um novo usuário | `{ "nome", "senha"}` |
 | `GET` | `/` | Lista todos os produtos cadastrados | N/A |
 | `GET` | `/{id}` | Busca um produto específico pelo ID | N/A |
 
