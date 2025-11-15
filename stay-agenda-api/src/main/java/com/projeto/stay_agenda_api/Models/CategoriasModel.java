@@ -8,10 +8,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
 @Table(name = "categorias")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CategoriasModel {
 
     @Id
@@ -24,39 +30,4 @@ public class CategoriasModel {
     // --- Relacionamento --- Uma categoria pode ter varios procedimentos
     @OneToMany(mappedBy = "categoria")
     private List<ProcedimentosModel> procedimentos;
-
-    // --- Construtor ---
-    public CategoriasModel() {
-    }
-
-    public CategoriasModel(String categoria, String descricao) {
-        this.categoria = categoria;
-        this.descricao = descricao;
-    }
-
-    // --- Getters e Setters ---
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setNome(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
 }

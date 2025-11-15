@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
 import com.projeto.stay_agenda_api.Models.UsuariosModel;
-import com.projeto.stay_agenda_api.Repositorys.UsuariosRepository;
+import com.projeto.stay_agenda_api.Repository.UsuariosRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.CrossOrigin;
@@ -50,7 +50,7 @@ public class UsuariosController {
     // --- READ (GET por ID) ---
     // URL: GET /api/usuarios/1 (ou /2, /3, etc.)
     @GetMapping("/{id}")
-    public ResponseEntity<UsuariosModel> buscarUsuarioPorId(@PathVariable int id) {
+    public ResponseEntity<UsuariosModel> buscarUsuarioPorId(@PathVariable Long id) {
         
         return usuarioRepository.findById(id)
                 .map(usuario -> ResponseEntity.ok().body(usuario)) // Se achar, retorna 200 OK
@@ -60,7 +60,7 @@ public class UsuariosController {
     // --- UPDATE (PUT) ---
     // URL: PUT /api/usuarios/1
     @PutMapping("/{id}")
-    public ResponseEntity<UsuariosModel> atualizarUsuario(@PathVariable int id, @RequestBody UsuariosModel usuarioAtualizado) {
+    public ResponseEntity<UsuariosModel> atualizarUsuario(@PathVariable Long id, @RequestBody UsuariosModel usuarioAtualizado) {
         
         return usuarioRepository.findById(id)
                 .map(usuarioExistente -> {
@@ -83,7 +83,7 @@ public class UsuariosController {
     // --- DELETE (DELETE) ---
     // URL: DELETE /api/usuarios/1
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarUsuario(@PathVariable int id) {
+    public ResponseEntity<?> deletarUsuario(@PathVariable Long id) {
         return usuarioRepository.findById(id)
                 .map(usuario -> {
                     usuarioRepository.deleteById(id);

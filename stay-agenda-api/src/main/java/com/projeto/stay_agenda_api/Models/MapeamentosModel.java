@@ -7,10 +7,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
 @Table(name = "mapeamentos")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MapeamentosModel {
 
     @Id
@@ -20,50 +26,15 @@ public class MapeamentosModel {
     private byte[] imagem;
 
     @ManyToOne
-    @JoinColumn(name = "procedimentoId")
+    @JoinColumn(name = "procedimento_id")
     private ProcedimentosModel procedimentos;
     
     @ManyToOne
-    @JoinColumn(name = "agendamentoId")
+    @JoinColumn(name = "agendamento_id")
     private AgendamentosModel agendamentos;
 
     @ManyToOne
-    @JoinColumn(name = "clienteId")
+    @JoinColumn(name = "cliente_id")
     private ClientesModel clientes;
-
-    // --- Construtor ---
-    public MapeamentosModel() {
-    }
-
-    public MapeamentosModel( String descricao, byte[] imagem) {
-        this.descricao = descricao;
-        this.imagem = imagem;
-    }
-
-    // --- Getters e Setters ---
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public byte[] getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(byte[] imagem) {
-        this.imagem = imagem;
-    }
     
 }

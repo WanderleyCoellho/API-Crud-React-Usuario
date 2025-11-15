@@ -8,9 +8,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "clientes") 
+@Table(name = "clientes")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClientesModel {
 
     @Id 
@@ -29,74 +35,4 @@ public class ClientesModel {
     
     @OneToMany(mappedBy = "clientes")
     private List<AgendamentosModel> agendamentos;
-
-    
-    // --- Construtor ---
-    public ClientesModel() {
-    }
-
-    public ClientesModel(String nome, String documento, String email, String redesocial, String telefone, String telefone2) {
-        this.nome = nome;
-        this.documento = documento;
-        this.email = email;
-        this.redesocial = redesocial;
-        this.telefone = telefone;
-        this.telefone2 = telefone2;
-    }
-
-    // --- Getters e Setters --- 
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
-
-     public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRedesocial() {
-        return redesocial;
-    }
-    public void setRedesocial(String redesocial) {
-        this.redesocial = redesocial;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getTelefone2() {
-        return telefone2;
-    }
-
-    public void setTelefone2(String telefone2) {
-        this.telefone2 = telefone2;
-    }
 }

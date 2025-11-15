@@ -11,9 +11,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "procedimentos")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProcedimentosModel {
 
     @Id
@@ -23,7 +29,7 @@ public class ProcedimentosModel {
     // --- Relacionamento --- Um procedimento tem uma unica categoria
     @ManyToOne
     // Foreign Key/Chave Estrangeira --- ou seja a coluna que referencia a outra tabela
-    @JoinColumn(name = "categoriaId")
+    @JoinColumn(name = "categoria_id")
     private CategoriasModel categoria;
 
 
@@ -36,69 +42,8 @@ public class ProcedimentosModel {
     @OneToMany(mappedBy = "procedimentos")
     private List<AgendamentosModel> agendamentos;
 
-    private Long idCategoria;
     private String procedimento;
     private String descricao;
     private BigDecimal valor;
 
-    // --- Construtor ---
-    public ProcedimentosModel() {
-    }
-
-    public ProcedimentosModel(CategoriasModel categoria, Long idCategoria, String procedimento, String descricao, BigDecimal valor) {
-        this.categoria = categoria;
-        this.idCategoria = idCategoria;
-        this.procedimento = procedimento;
-        this.descricao = descricao;
-        this.valor = valor;
-    }
-
-    // --- Getters e Setters ---
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getProcedimento() {
-        return procedimento;
-    }
-
-    public void setNome(String procedimento) {
-        this.procedimento = procedimento;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setPreco( BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    public CategoriasModel getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriasModel categoria) {
-        this.categoria = categoria;
-    }
-
-    public Long getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(Long idCategoria) {
-        this.idCategoria = idCategoria;
-    }
 }

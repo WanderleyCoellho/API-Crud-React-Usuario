@@ -3,7 +3,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.projeto.stay_agenda_api.Models.ClientesModel;
-import com.projeto.stay_agenda_api.Repositorys.ClientesRepository;
+import com.projeto.stay_agenda_api.Repository.ClientesRepository;
+
 import java.util.List;
 
 
@@ -29,7 +30,7 @@ public class ClientesController {
 
     // --- READ (GET por ID) ---
     @GetMapping("/{id}")
-    public ResponseEntity<ClientesModel> buscarClientePorId(@PathVariable int id) {
+    public ResponseEntity<ClientesModel> buscarClientePorId(@PathVariable Long id) {
         return clienteRepository.findById(id)
                 .map(cliente -> ResponseEntity.ok().body(cliente))
                 .orElse(ResponseEntity.notFound().build());
@@ -37,7 +38,7 @@ public class ClientesController {
 
     // --- UPDATE (PUT) ---
     @PutMapping("/{id}")
-    public ResponseEntity<ClientesModel> atualizarCliente(@PathVariable int id, @RequestBody
+    public ResponseEntity<ClientesModel> atualizarCliente(@PathVariable Long id, @RequestBody
     ClientesModel clienteAtualizado) {
         return clienteRepository.findById(id)
                 .map(cliente -> {
@@ -55,7 +56,7 @@ public class ClientesController {
 
     // --- DELETE (DELETE) ---
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarCliente(@PathVariable int id) {
+    public ResponseEntity<Void> deletarCliente(@PathVariable Long id) {
         return clienteRepository.findById(id)
                 .map(cliente -> {
                     clienteRepository.delete(cliente);

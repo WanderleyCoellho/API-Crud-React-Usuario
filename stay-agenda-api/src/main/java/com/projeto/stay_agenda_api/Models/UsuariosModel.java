@@ -5,9 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity // Diz ao Spring que esta classe é uma tabela
 @Table(name = "usuario") // Diz o nome da tabela no MySQL
+@Data // Gera Getters, Setters, toString, equals e hashCode automaticamente
+@AllArgsConstructor // Gera um construtor com todos os campos
+@NoArgsConstructor // Gera um construtor vazio
 public class UsuariosModel {
 
     @Id // Marca como Chave Primária
@@ -16,30 +22,4 @@ public class UsuariosModel {
 
     private String nome;
     private String senha; // O hash da senha
-
-    // Construtor vazio (Obrigatório para o JPA)
-    public UsuariosModel() {
-    }
-
-    // --- Getters e Setters ---
-    // (Obrigatórios para o JPA)
-    
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 }
